@@ -1,7 +1,9 @@
-import Item from './Item.js';
+import React, {useState} from 'react';
 
-const carbonData = {
-  "items": [
+import Item from './Item.js';
+import AddItemForm from './AddItemForm'
+
+const carbonData = [
     {"name":"Fly", "unit":"km", "carbon":254},
     {"name":"Drive", "unit":"km", "carbon":171},
     {"name":"Bus", "unit":"km", "carbon":104},
@@ -18,11 +20,11 @@ const carbonData = {
     {"name":"Cotton T-Shirt", "unit":"item", "carbon":2000},
     {"name":"Polyester Dress", "unit":"item", "carbon":17000}
 ]
-}
 
 function filterData(dataSelection) {
   let filteredData = []
-  carbonData.items.forEach((item) => {
+  console.log(dataSelection)
+  carbonData.forEach((item) => {
     dataSelection.forEach((selection) => {
       if (item.name === selection.name) {
         filteredData.push({"name":item.name, "quantity":selection.quantity, "unit": item.unit, "carbon": item.carbon*selection.quantity, "highlighted":false})
@@ -62,16 +64,29 @@ function createItems(rows) {
   return items;
 }
 
+
+
 function App() {
-  let dataSelection = [
+  const [dataSelection, setDataSelection] = useState([
     {"name":'Fly', "quantity":1000},
     {"name":'Beef', "quantity":250},
     {"name":'LED lightbulb', "quantity":1},
-  ]
+  ])
+
   let filteredData = filterData(dataSelection)
+
+  function addSelection(itemName, quantity) {
+    setDataSelection(dataSelection.concat({"name": itemName, "quantity": quantity}))
+  }
+
   return (
-    <div className="App" style={{display: 'flex', justifyContent: 'center'}}>
-      {createItems(filteredData)}
+    <div className="App" >
+      <div style={{margin: 'auto', width: 400}}>
+      <AddItemForm data={carbonData} addSelection={addSelection} />
+      </div>
+      <div style={{display: 'flex', justifyContent: 'center'}}>
+        {createItems(filteredData)}
+      </div>
     </div>
   );
 }
