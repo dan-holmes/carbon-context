@@ -9,7 +9,7 @@ function circleColor(highlighted) {
 }
 
 function Item(props) {
-  let size = props.data.carbon
+  let size = Math.sqrt((props.data.carbon/props.maxCarbon)) * 200
   let text = props.data.name + " - " + props.data.quantity + " " + props.data.unit
   let highlighted = props.data.highlighted
   return (
@@ -21,7 +21,7 @@ function Item(props) {
           flexDirection: 'column',
           marginLeft: size
         }}>
-      <div className="Circle" style={{height: 300, position: 'relative'}}>
+      <div className="Circle" style={{height: 500, position: 'relative'}}>
         <div style={{position: 'absolute', bottom: 0, left: '50%', marginLeft: -size}} >
           <Circle r={size} fill={circleColor(highlighted)} />
         </div>
