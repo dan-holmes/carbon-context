@@ -1,16 +1,5 @@
 import {Circle} from 'react-shapes';
 
-function textFitsInside(text, size) {
-  return text.length * 4 < size * 2
-}
-
-const itemStyle = {
-  position: 'relative',
-  padding: 10,
-  display: 'flex',
-  flexDirection: 'column'
-}
-
 function circleColor(highlighted) {
   if (highlighted) {
     return {color:'#48D1CC'}
@@ -24,7 +13,14 @@ function Item(props) {
   let text = props.data.name + " - " + props.data.quantity + " " + props.data.unit
   let highlighted = props.data.highlighted
   return (
-    <div className="Item" style = {itemStyle} style={{marginLeft: size}}>
+    <div className="Item" 
+        style={{
+          position: 'relative',
+          padding: 10,
+          display: 'flex',
+          flexDirection: 'column',
+          marginLeft: size
+        }}>
       <div className="Circle" style={{height: 300, position: 'relative'}}>
         <div style={{position: 'absolute', bottom: 0, left: '50%', marginLeft: -size}} >
           <Circle r={size} fill={circleColor(highlighted)} />
