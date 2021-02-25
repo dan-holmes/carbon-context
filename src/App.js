@@ -9,8 +9,19 @@ let data = {
     {"name":"Eat steak", "quantity":500, "unit":"grams", "carbon":14, "highlighted":true}
 ]};
 
+function compareRows(a, b) {
+  if (a.carbon < b.carbon) {
+    return -1;
+  } else if (a.carbon > b.carbon) {
+    return 1
+  } else {
+    return 0
+  }
+}
+
 function createItems(data) {
   let rows = data.items
+  rows = rows.sort(compareRows)
   let items = []
   rows.forEach(row => {
     items.push(<Item data={row} />);
