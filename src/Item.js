@@ -7,30 +7,8 @@ function textFitsInside(text, size) {
 const itemStyle = {
   position: 'relative',
   padding: 10,
-}
-
-const circleStyle = {
-
-}
-
-const overlappingLabelStyle = {
-  position: 'absolute',
-  top: '50%',
-  width: '100%',
-  textAlign: 'center',
-  fontSize: 18
-}
-
-const seperateLabelStyle = {
-  fontSize: 18
-}
-
-function dynamicLabelStyle(text, size) {
-  if (textFitsInside(text, size)) { 
-    return overlappingLabelStyle 
-  } else {
-    return seperateLabelStyle
-  }
+  display: 'flex',
+  flexDirection: 'column'
 }
 
 function circleColor(highlighted) {
@@ -46,11 +24,13 @@ function Item(props) {
   let text = props.data.name + " - " + props.data.quantity + " " + props.data.unit
   let highlighted = props.data.highlighted
   return (
-    <div className="Item" style = {itemStyle}>
-      <div className="Circle" style={circleStyle}>
-        <Circle r={size} fill={circleColor(highlighted)} />
+    <div className="Item" style = {itemStyle} style={{marginLeft: size}}>
+      <div className="Circle" style={{height: 300, position: 'relative'}}>
+        <div style={{position: 'absolute', bottom: 0, left: '50%', marginLeft: -size}} >
+          <Circle r={size} fill={circleColor(highlighted)} />
+        </div>
       </div>
-      <div className="Label" style={dynamicLabelStyle(text, size)}>
+      <div className="Label" >
         {text}
       </div>
     </div>

@@ -31,7 +31,7 @@ function createItems(data) {
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{display: 'flex', justifyContent: 'center'}}>
       {createItems(data)}
     </div>
   );
