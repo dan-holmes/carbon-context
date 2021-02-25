@@ -3,16 +3,18 @@ import Item from './Item.js';
 
 
 let data = {
-  "Lightbulb for one hour": 2,
-  "Fly one mile": 100,
-  "Eat 1kg of steak": 14
-};
+  "items":[
+    {"name":"Use lightbulb", "quantity":2, "unit":"hours", "carbon":4, "highlighted":false},
+    {"name":"Fly", "quantity":1, "unit":"mile", "carbon":100, "highlighted":false},
+    {"name":"Eat steak", "quantity":500, "unit":"grams", "carbon":14, "highlighted":true}
+]};
 
 function createItems(data) {
+  let rows = data.items
   let items = []
-  for (const [key, value] of Object.entries(data)) {
-    items.push(<Item name={key} carbon={value} />);
-  }
+  rows.forEach(row => {
+    items.push(<Item data={row} />);
+  })
   return items;
 }
 
