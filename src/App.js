@@ -1,5 +1,6 @@
 import './App.css';
-import {Circle} from 'react-shapes';
+import Item from './Item.js';
+
 
 let data = {
   "Lightbulb for one hour": 2,
@@ -7,18 +8,18 @@ let data = {
   "Eat 1kg of steak": 14
 };
 
-function createCircles(data) {
-  let circles = []
+function createItems(data) {
+  let items = []
   for (const [key, value] of Object.entries(data)) {
-    circles.push(<Circle r={value} fill={{color:'#2409ba'}} stroke={{color:'#E65243'}} strokeWidth={3} />);
+    items.push(<Item name={key} carbon={value} />);
   }
-  return circles;
+  return items;
 }
 
 function App() {
   return (
     <div className="App">
-      {createCircles(data)}
+      {createItems(data)}
     </div>
   );
 }
