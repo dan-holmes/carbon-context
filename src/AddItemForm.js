@@ -62,24 +62,20 @@ class AddItemForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Item: 
-          <select
+          Item: <select
             name="itemName"
             value={this.state.itemName}
             onChange={this.handleInputChange}>
               {this.getOptions()}
           </select>
-        </label>
-        <br />
+        </label> <label>
           <input
-            name="quantity"
-            type="number"
-            value={this.state.numberOfGuests}
-            onChange={this.handleInputChange} />
-        <label>
-          {this.state.units}
-        </label>
-        <input type="submit" value="Submit" />
+              name="quantity"
+              type="number"
+              value={this.state.numberOfGuests}
+              onChange={this.handleInputChange} 
+          /> {this.state.units}
+        </label> <input type="submit" value="Submit" />
       </form>
     );
   }

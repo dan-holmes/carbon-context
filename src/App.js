@@ -14,11 +14,11 @@ const carbonData = [
     {"name":"Chocolate", "unit":"g", "carbon":19},
     {"name":"Rice", "unit":"g", "carbon":4},
     {"name":"Apples", "unit":"g", "carbon":0.4},
-    {"name":"LED lightbulb", "unit":"hour", "carbon":167},
-    {"name":"Halogen lightbulb", "unit":"hour", "carbon":811},
-    {"name":"Jeans", "unit":"pair", "carbon":33400},
-    {"name":"Cotton T-Shirt", "unit":"item", "carbon":2000},
-    {"name":"Polyester Dress", "unit":"item", "carbon":17000}
+    {"name":"LED lightbulb", "unit":"hours", "carbon":167},
+    {"name":"Halogen lightbulb", "unit":"hours", "carbon":811},
+    {"name":"Jeans", "unit":"pairs", "carbon":33400},
+    {"name":"Cotton T-Shirt", "unit":"items", "carbon":2000},
+    {"name":"Polyester Dress", "unit":"items", "carbon":17000}
 ]
 
 function filterData(dataSelection) {
@@ -81,8 +81,8 @@ function App() {
 
   return (
     <div className="App" >
-      <div style={{margin: 'auto', width: 400}}>
-      <AddItemForm data={carbonData} addSelection={addSelection} />
+      <div style={{margin: 'auto', width: 600}}>
+        <AddItemForm data={carbonData} addSelection={addSelection} />
       </div>
       <div style={{display: 'flex', justifyContent: 'center'}}>
         {createItems(filteredData)}
