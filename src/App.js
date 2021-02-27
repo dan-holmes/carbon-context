@@ -18,7 +18,8 @@ const carbonData = [
     {"name":"Halogen lightbulb", "unit":"hours", "carbon":811},
     {"name":"Jeans", "unit":"pairs", "carbon":33400},
     {"name":"Cotton T-Shirt", "unit":"items", "carbon":2000},
-    {"name":"Polyester Dress", "unit":"items", "carbon":17000}
+    {"name":"Polyester Dress", "unit":"items", "carbon":17000},
+    {"name":"Bitcoin", "unit":"transactions", "carbon":322000}
 ]
 
 function filterData(dataSelection) {
