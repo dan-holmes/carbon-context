@@ -27,7 +27,7 @@ function Item(props) {
         </div>
       </div>
       <div className="Label" >
-        {text}
+        {text} <button onClick={() => {props.deleteSelection(props.data.name, props.data.quantity)}}>x</button>
       </div>
     </div>
   );

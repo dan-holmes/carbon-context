@@ -28,7 +28,6 @@ class AddItemForm extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log('handle submit')
     this.props.addSelection(this.state.itemName, this.state.quantity)
     event.preventDefault();
   }

@@ -24,7 +24,6 @@ const carbonData = [
 
 function filterData(dataSelection) {
   let filteredData = []
-  console.log(dataSelection)
   carbonData.forEach((item) => {
     dataSelection.forEach((selection) => {
       if (item.name === selection.name) {
@@ -55,18 +54,6 @@ function getMaxCarbon(rows) {
   return max
 }
 
-function createItems(rows) {
-  rows = rows.sort(compareRows)
-  let items = []
-  let maxCarbon = getMaxCarbon(rows)
-  rows.forEach(row => {
-    items.push(<Item data={row} maxCarbon={maxCarbon} />);
-  })
-  return items;
-}
-
-
-
 function App() {
   const [dataSelection, setDataSelection] = useState([
     {"name":'Fly', "quantity":1000},
@@ -78,6 +65,26 @@ function App() {
 
   function addSelection(itemName, quantity) {
     setDataSelection(dataSelection.concat({"name": itemName, "quantity": quantity}))
+  }
+
+  function deleteSelection(itemName, quantity) {
+    let newDataSelection = []
+    for (let i = 0; i < dataSelection.length; i++) {
+      if (dataSelection[i].name !== itemName || dataSelection[i].quantity !== quantity) {
+        newDataSelection.push(dataSelection[i])
+      }
+    }
+    setDataSelection(newDataSelection)
+  }
+
+  function createItems(rows) {
+    rows = rows.sort(compareRows)
+    let items = []
+    let maxCarbon = getMaxCarbon(rows)
+    for (let i = 0; i < rows.length; i++) {
+      items.push(<Item key={i} data={rows[i]} maxCarbon={maxCarbon} deleteSelection={deleteSelection} />);
+    }
+    return items;
   }
 
   return (
